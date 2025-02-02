@@ -66,3 +66,6 @@ tarifa diária do veículo.
 - Listagem de veículos de luxo.
 
 ## Diagrama de classes
+<p align = center>
+<img src="https://i.ibb.co/XxL2m5sp/Whats-App-Image-2025-02-02-at-3-21-59-PM.jpg" alt="Whats-App-Image-2025-02-02-at-3-21-59-PM" border="0">
+</p>
