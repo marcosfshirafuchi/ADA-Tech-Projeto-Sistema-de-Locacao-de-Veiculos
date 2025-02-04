@@ -1,12 +1,12 @@
 # <a href="https://imgbb.com/"><img src="https://i.ibb.co/wNCRx9z/image-2025-01-04-T23-13-02-901-Z.png" alt="image-2025-01-04-T23-13-02-901-Z" border="0" width =150 heigth = 100></a> Desenvolva + : Sistema de Locação de Veículos
 
 #### Desenvolvido na linguagem Java por:
-- Alan Cleber
-- Bruno Ferreira
-- Claudia Bispo 
+- [Alan Cleber](https://github.com/superalanjoe)
+- [Bruno Ferreira](https://github.com/BrunoFerreira1990)
+- [Claudia Bispo](https://github.com/claudia-r-bispo)
 - [Marcos Shirafuchi](https://github.com/marcosfshirafuchi)
-- Mattheus Tiberio Lima
-- Raquel Correa 
+- [Mattheus Tiberio Lima](https://github.com/mattheus-dev)
+- [Raquel Corrêa de Souza](https://github.com/Quelzinha89) 
 
 ## Principais Tecnologias
 
@@ -67,5 +67,5 @@ tarifa diária do veículo.
 
 ## Diagrama de classes
 <p align = center>
-<img src="https://i.ibb.co/XxL2m5sp/Whats-App-Image-2025-02-02-at-3-21-59-PM.jpg" alt="Whats-App-Image-2025-02-02-at-3-21-59-PM" border="0">
+<img src="https://i.ibb.co/GQBSV5yL/image-2025-02-04-T01-08-01-749-Z.png" alt="image-2025-02-04-T01-08-01-749-Z" border="0">
 </p>
