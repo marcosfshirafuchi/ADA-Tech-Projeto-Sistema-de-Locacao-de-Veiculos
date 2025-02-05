@@ -67,5 +67,5 @@ tarifa diária do veículo.
 
 ## Diagrama de classes
 <p align = center>
-<img src="https://i.ibb.co/GQBSV5yL/image-2025-02-04-T01-08-01-749-Z.png" alt="image-2025-02-04-T01-08-01-749-Z" border="0">
+<img src="https://i.ibb.co/GQgWBY08/image-2025-02-05-T16-31-05-696-Z.png" alt="image-2025-02-05-T16-31-05-696-Z" border="0">
 </p>
