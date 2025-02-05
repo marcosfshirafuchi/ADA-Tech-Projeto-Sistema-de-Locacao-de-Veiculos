@@ -1,12 +1,12 @@
-package Cliente;
+package Clientes;
 
 public abstract class Cliente {
     private String nome;
     private String documento;
-    private String endereco;
+    private Endereco endereco;
     private String telefone;
 
-    public Cliente(String nome, String documento, String endereco, String telefone) {
+    public Cliente(String nome, String documento, Endereco endereco, String telefone) {
         this.nome = nome;
         this.documento = documento;
         this.endereco = endereco;
@@ -29,11 +29,11 @@ public abstract class Cliente {
         this.documento = documento;
     }
 
-    public String getEndereco() {
+    public Endereco getEndereco() {
         return endereco;
     }
 
-    public void setEndereco(String endereco) {
+    public void setEndereco(Endereco endereco) {
         this.endereco = endereco;
     }
 
@@ -43,5 +43,15 @@ public abstract class Cliente {
 
     public void setTelefone(String telefone) {
         this.telefone = telefone;
+    }
+
+    @Override
+    public String toString() {
+        return "Cliente{" +
+                "nome='" + nome + '\'' +
+                ", documento='" + documento + '\'' +
+                ", endereco=" + endereco +
+                ", telefone='" + telefone + '\'' +
+                '}';
     }
 }
