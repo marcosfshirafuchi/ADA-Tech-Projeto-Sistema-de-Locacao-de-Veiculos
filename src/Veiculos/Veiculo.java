@@ -1,4 +1,4 @@
-package Veiculo;
+package Veiculos;
 
 public abstract class Veiculo {
     private String modelo;
