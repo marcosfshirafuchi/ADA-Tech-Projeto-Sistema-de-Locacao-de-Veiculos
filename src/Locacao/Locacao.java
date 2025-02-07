@@ -4,6 +4,7 @@ import Clientes.Cliente;
 import Veiculos.Veiculo;
 
 import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
 import java.time.temporal.ChronoUnit;
 
 public class Locacao {
@@ -26,6 +27,7 @@ public class Locacao {
     public void alugarVeiculo(Locacao locacao,LocalDate dataDeInicio, LocalDate dataDeFim){
 
     }
+
     public double devolverVeiculo(LocalDate dataDeInicio, LocalDate dataDeFim, LocalDate dataDeFimAtual){
         LocalDate hoje = dataDeFimAtual;
         double multa = 0.0;
@@ -90,11 +92,12 @@ public class Locacao {
 
     @Override
     public String toString() {
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd/MM/yyyy");
         return "Locacao{" +
                 "cliente=" + cliente +
                 ", veiculo=" + veiculo +
-                ", dataDeInicio=" + dataDeInicio +
-                ", dataDeFim=" + dataDeFim +
+                ", dataDeInicio=" + dataDeInicio.format(formatter) +
+                ", dataDeFim=" + dataDeFim.format(formatter) +
                 '}';
     }
 }

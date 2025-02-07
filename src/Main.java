@@ -6,8 +6,10 @@ import java.time.LocalDate;
 import java.util.Scanner;
 
 import static Clientes.CadastrarCliente.cadastrarPessoaJuridica;
-import static Clientes.DataDevolucao.dataAtualDeDevolucao;
-import static Clientes.DataDevolucao.dataDeDevolucaoRegistrada;
+import static Locacao.DataDevolucao.dataAtualDeDevolucao;
+import static Locacao.DataDevolucao.dataDeDevolucaoRegistrada;
+import static Locacao.DataDeEntrada.dataDeDEntrada;
+import static Locacao.LocacaoValidator.validarPeriodoLocacao;
 
 public class Main {
     public static void main(String[] args) {
@@ -28,29 +30,34 @@ public class Main {
                 pessoaJuridica = cadastrarPessoaJuridica();
                 break;
         }
-        System.out.println("Digite a data de inicio: ");
-        System.out.print("Digite o dia: ");
-        int dia = scanner.nextInt();
-        System.out.print("Digite o mês: ");
-        int mes = scanner.nextInt();
-        System.out.print("Digite o ano: ");
-        int ano = scanner.nextInt();
-        LocalDate dataInicio = LocalDate.of(ano, mes, dia);
-        LocalDate dataFim = dataDeDevolucaoRegistrada();
+        int dia = 0;
+        int mes = 0;
+        int ano = 0;
+        LocalDate dataInicio;
+        LocalDate dataFim;
+        do{
+            dataInicio = dataDeDEntrada();
+            dataFim = dataDeDevolucaoRegistrada();
+            if (!validarPeriodoLocacao(dataInicio, dataFim)){
+                System.out.println("Período de locação inválido.");
+            }else{
+                System.out.println("Período de locação válido.");
+            }
+        }while (!validarPeriodoLocacao(dataInicio, dataFim));
         Suv carro = new Suv(1,"Honda Civic", "XYZ-9876", 200.0, true, true, true,true);
         Locacao locacao = null;
         LocalDate dataFimAtual;
         switch (opcaoCliente){
             case 1:
                 locacao = new Locacao(pessoafisica,carro,dataInicio,dataFim);
-                dataFimAtual = dataAtualDeDevolucao();
+                dataFimAtual = dataAtualDeDevolucao(dataInicio);
                 locacao = new Locacao(pessoafisica,carro,dataInicio,dataFimAtual);
                 System.out.println(locacao);
                 System.out.println("Valor a ser Pago: " + String.format("R$ %.2f", locacao.devolverVeiculo(dataInicio,dataFim,dataFimAtual)));
                 break;
             case 2:
                 locacao = new Locacao(pessoaJuridica,carro,dataInicio,dataFim);
-                dataFimAtual = dataAtualDeDevolucao();
+                dataFimAtual = dataAtualDeDevolucao(dataInicio);
                 locacao = new Locacao(pessoaJuridica,carro,dataInicio,dataFimAtual);
                 System.out.println(locacao);
                 System.out.println("Valor a ser Pago: " + String.format("R$ %.2f", locacao.devolverVeiculo(dataInicio,dataFim,dataFimAtual)));
@@ -59,6 +66,4 @@ public class Main {
         locacao.alugarVeiculo(locacao,dataInicio, dataFim);
         scanner.close();
     }
-
-
 }
