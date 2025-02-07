@@ -1,37 +1,64 @@
-import Clientes.Cliente;
-import Clientes.Endereco;
-import Clientes.Estados;
+import Clientes.*;
 import Locacao.Locacao;
-import Veiculo.SUV;
-import Clientes.PessoaFisica;
+import Veiculos.Suv;
+
 import java.time.LocalDate;
 import java.util.Scanner;
+
+import static Clientes.CadastrarCliente.cadastrarPessoaJuridica;
+import static Clientes.DataDevolucao.dataAtualDeDevolucao;
+import static Clientes.DataDevolucao.dataDeDevolucaoRegistrada;
 
 public class Main {
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
-//        System.out.print("Digite o CPF ex: 00000000000 => ");
-//        String CPF = scanner.nextLine();
-//        if (ValidaCPF.isCPF(CPF) == true)
-//            System.out.printf("%s\n", ValidaCPF.imprimeCPF(CPF));
-//        else System.out.printf("Erro, CPF invalido !!!\n");
-//
-//        System.out.print("Informe um CNPJ: ");
-//        String CNPJ = scanner.nextLine();
-//        if (ValidaCNPJ.isCNPJ(CNPJ) == true)
-//            System.out.printf("%s\n", ValidaCNPJ.imprimeCNPJ(CNPJ));
-//        else System.out.printf("Erro, CNPJ inválido !!!\n");
-
-        Endereco endereco = new Endereco("02478-521","Avenida Estados Unidos","271", "AP 145","Jardim América","São Paulo", Estados.SAO_PAULO);
-        Cliente cliente = new PessoaFisica("Bruno Berdinazi","10407012052",endereco,"1197413-2458");
-        //System.out.println(endereco);
-        LocalDate dataInicio = LocalDate.of(2025, 2, 1);
-        LocalDate dataFim = LocalDate.of(2025, 2, 4);
-        SUV carro = new SUV("Honda Civic", "XYZ-9876", 200.0, true);
-        Locacao locacao = new Locacao(cliente,carro,dataInicio,dataFim);
-        locacao.alugarVeiculo(dataInicio, dataFim);
-        System.out.println(locacao);
-        System.out.println("Valor a ser Pago: " + String.format("R$ %.2f", locacao.devolverVeiculo(dataInicio,dataFim)));
+        System.out.println("**************Sistema de Locação de Veículos**************");
+        System.out.println("Escolha a opção do cliente:");
+        System.out.println("1 - Pessoa Física.");
+        System.out.println("2 - Pessoa Juridica.");
+        System.out.print("Digite a opção do cliente desejada: ");
+        int opcaoCliente = scanner.nextInt();
+        PessoaFisica pessoafisica = new PessoaFisica();
+        PessoaJuridica pessoaJuridica = new PessoaJuridica();
+        switch (opcaoCliente){
+            case 1:
+                pessoafisica = CadastrarCliente.cadastrarPessoaFisica();
+                break;
+            case 2:
+                pessoaJuridica = cadastrarPessoaJuridica();
+                break;
+        }
+        System.out.println("Digite a data de inicio: ");
+        System.out.print("Digite o dia: ");
+        int dia = scanner.nextInt();
+        System.out.print("Digite o mês: ");
+        int mes = scanner.nextInt();
+        System.out.print("Digite o ano: ");
+        int ano = scanner.nextInt();
+        LocalDate dataInicio = LocalDate.of(ano, mes, dia);
+        LocalDate dataFim = dataDeDevolucaoRegistrada();
+        Suv carro = new Suv("Honda Civic", "XYZ-9876", 200.0, true, true, true,true);
+        Locacao locacao = null;
+        LocalDate dataFimAtual;
+        switch (opcaoCliente){
+            case 1:
+                locacao = new Locacao(pessoafisica,carro,dataInicio,dataFim);
+                dataFimAtual = dataAtualDeDevolucao();
+                locacao = new Locacao(pessoafisica,carro,dataInicio,dataFimAtual);
+                System.out.println(locacao);
+                System.out.println("Valor a ser Pago: " + String.format("R$ %.2f", locacao.devolverVeiculo(dataInicio,dataFim,dataFimAtual)));
+                break;
+            case 2:
+                locacao = new Locacao(pessoaJuridica,carro,dataInicio,dataFim);
+                dataFimAtual = dataAtualDeDevolucao();
+                locacao = new Locacao(pessoaJuridica,carro,dataInicio,dataFimAtual);
+                System.out.println(locacao);
+                System.out.println("Valor a ser Pago: " + String.format("R$ %.2f", locacao.devolverVeiculo(dataInicio,dataFim,dataFimAtual)));
+                break;
+        }
+        locacao.alugarVeiculo(locacao,dataInicio, dataFim);
         scanner.close();
     }
+
+
 }

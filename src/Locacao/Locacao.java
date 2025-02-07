@@ -1,7 +1,7 @@
 package Locacao;
 
 import Clientes.Cliente;
-import Veiculo.Veiculo;
+import Veiculos.Veiculo;
 
 import java.time.LocalDate;
 import java.time.temporal.ChronoUnit;
@@ -23,12 +23,11 @@ public class Locacao {
     }
 
 
-    public void alugarVeiculo(LocalDate dataDeInicio, LocalDate dataDeFim){
-        this.dataDeInicio = dataDeInicio;
-        this.dataDeFim = dataDeFim;
+    public void alugarVeiculo(Locacao locacao,LocalDate dataDeInicio, LocalDate dataDeFim){
+
     }
-    public double devolverVeiculo(LocalDate dataDeInicio, LocalDate dataDeFim){
-        LocalDate hoje = LocalDate.now();
+    public double devolverVeiculo(LocalDate dataDeInicio, LocalDate dataDeFim, LocalDate dataDeFimAtual){
+        LocalDate hoje = dataDeFimAtual;
         double multa = 0.0;
         long dias = 0;
         long diaPassados = 0;

@@ -1,4 +1,4 @@
-package Veiculo;
+package Veiculos;
 
 public abstract class Veiculo {
     private String modelo;
@@ -45,5 +45,13 @@ public abstract class Veiculo {
         this.disponibilidade = disponibilidade;
     }
 
-
+    @Override
+    public String toString() {
+        return "Veiculo{" +
+                "modelo='" + modelo + '\'' +
+                ", placa='" + placa + '\'' +
+                ", valorDaDiaria=" + valorDaDiaria +
+                ", disponibilidade=" + disponibilidade +
+                '}';
+    }
 }

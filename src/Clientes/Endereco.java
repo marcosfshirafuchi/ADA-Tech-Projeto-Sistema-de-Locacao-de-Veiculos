@@ -1,5 +1,6 @@
 package Clientes;
 
+
 public class Endereco {
     private String cep;
     private String logradouro;
@@ -7,9 +8,12 @@ public class Endereco {
     private String complemento;
     private String bairro;
     private String cidade;
-    private Estados estados;
+    private EstadoBrasil estados;
 
-    public Endereco(String cep, String logradouro, String numero, String complemento, String bairro, String cidade, Estados estados) {
+    public Endereco(){
+
+    }
+    public Endereco(String cep, String logradouro, String numero, String complemento, String bairro, String cidade, EstadoBrasil estados) {
         this.cep = cep;
         this.logradouro = logradouro;
         this.numero = numero;
@@ -19,7 +23,7 @@ public class Endereco {
         this.estados = estados;
     }
 
-    public Endereco(String cep, String logradouro, String numero, String bairro, String cidade, Estados estados) {
+    public Endereco(String cep, String logradouro, String numero, String bairro, String cidade, EstadoBrasil estados) {
         this.cep = cep;
         this.logradouro = logradouro;
         this.numero = numero;
@@ -27,6 +31,8 @@ public class Endereco {
         this.cidade = cidade;
         this.estados = estados;
     }
+
+
 
     @Override
     public String toString() {
@@ -37,7 +43,7 @@ public class Endereco {
                 ", complemento='" + complemento + '\'' +
                 ", bairro='" + bairro + '\'' +
                 ", Cidade='" + cidade + '\'' +
-                ", estados=" + estados +
+                ", estado= " + estados.getSigla() +
                 '}';
     }
 }

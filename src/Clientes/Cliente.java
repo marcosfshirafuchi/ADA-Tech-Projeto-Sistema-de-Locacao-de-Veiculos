@@ -6,6 +6,9 @@ public abstract class Cliente {
     private Endereco endereco;
     private String telefone;
 
+    public Cliente(){
+
+    }
     public Cliente(String nome, String documento, Endereco endereco, String telefone) {
         this.nome = nome;
         this.documento = documento;
