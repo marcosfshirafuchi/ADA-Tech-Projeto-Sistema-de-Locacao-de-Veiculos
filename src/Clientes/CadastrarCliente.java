@@ -29,7 +29,7 @@ public class CadastrarCliente {
         String complemento = null;
         int opcao;
         do{
-            System.out.print("Precisa preecher algum dado complementar do endereço do cliente: \n(1 - Sim ou 2 - Não)");
+            System.out.print("Precisa preecher algum dado complementar do endereço do cliente: \n(1 - Sim ou 2 - Não): ");
             opcao = scanner.nextInt();
             switch (opcao){
                 case(1):

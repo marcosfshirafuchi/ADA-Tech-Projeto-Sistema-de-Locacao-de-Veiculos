@@ -37,7 +37,7 @@ public class Main {
         int ano = scanner.nextInt();
         LocalDate dataInicio = LocalDate.of(ano, mes, dia);
         LocalDate dataFim = dataDeDevolucaoRegistrada();
-        Suv carro = new Suv("Honda Civic", "XYZ-9876", 200.0, true, true, true,true);
+        Suv carro = new Suv(1,"Honda Civic", "XYZ-9876", 200.0, true, true, true,true);
         Locacao locacao = null;
         LocalDate dataFimAtual;
         switch (opcaoCliente){
