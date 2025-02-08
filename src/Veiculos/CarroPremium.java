@@ -6,7 +6,7 @@ public class CarroPremium extends Veiculo implements VeiculoLuxo {
     private boolean visaoNoturna;
     private boolean pilotoAutomatico;
 
-    public CarroPremium(int codigoVeiculo,String modelo, String placa, double valorDaDiaria, boolean disponibilidade,TipoVeiculo tipoVeiculo) {
+    public CarroPremium(int codigoVeiculo,String modelo, String placa, double valorDaDiaria, boolean disponibilidade,String tipoVeiculo) {
         super(codigoVeiculo,modelo, placa, valorDaDiaria, disponibilidade, tipoVeiculo);
     }
 

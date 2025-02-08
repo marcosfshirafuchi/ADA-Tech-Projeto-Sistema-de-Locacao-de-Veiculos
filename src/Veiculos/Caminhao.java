@@ -1,30 +1,30 @@
 package Veiculos;
 
 public class Caminhao extends Veiculo {
-    private double capacidadeCarga;
-    private int numeroEixos;
+//    private double capacidadeCarga;
+//    private int numeroEixos;
 
-    public Caminhao(int codigoVeiculo, String modelo, String placa, double valorDaDiaria, boolean disponibilidade,TipoVeiculo tipoVeiculo, double capacidadeCarga, int numeroEixos) {
+    public Caminhao(int codigoVeiculo, String modelo, String placa, double valorDaDiaria, boolean disponibilidade,String tipoVeiculo) {
         super(codigoVeiculo, modelo, placa, valorDaDiaria, disponibilidade, tipoVeiculo);
-        this.capacidadeCarga = capacidadeCarga;
-        this.numeroEixos = numeroEixos;
+//        this.capacidadeCarga = capacidadeCarga;
+//        this.numeroEixos = numeroEixos;
     }
 
-    public double getCapacidadeCarga() {
-        return capacidadeCarga;
-    }
-
-    public void setCapacidadeCarga(double capacidadeCarga) {
-        this.capacidadeCarga = capacidadeCarga;
-    }
-
-    public int getNumeroEixos() {
-        return numeroEixos;
-    }
-
-    public void setNumeroEixos(int numeroEixos) {
-        this.numeroEixos = numeroEixos;
-    }
+//    public double getCapacidadeCarga() {
+//        return capacidadeCarga;
+//    }
+//
+//    public void setCapacidadeCarga(double capacidadeCarga) {
+//        this.capacidadeCarga = capacidadeCarga;
+//    }
+//
+//    public int getNumeroEixos() {
+//        return numeroEixos;
+//    }
+//
+//    public void setNumeroEixos(int numeroEixos) {
+//        this.numeroEixos = numeroEixos;
+//    }
 }
 //    @Override
 //    public String toString() {

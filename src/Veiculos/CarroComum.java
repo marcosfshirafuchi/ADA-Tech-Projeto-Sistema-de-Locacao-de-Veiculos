@@ -1,20 +1,20 @@
 package Veiculos;
 
 public class CarroComum extends Veiculo {
-    private String tipoCombustivel;
+    //private String tipoCombustivel;
 
-    public CarroComum(int codigoVeiculo, String modelo, String placa, double valorDaDiaria, boolean disponibilidade,TipoVeiculo tipoVeiculo, String tipoCombustivel) {
+    public CarroComum(int codigoVeiculo, String modelo, String placa, double valorDaDiaria, boolean disponibilidade,String tipoVeiculo) {
         super(codigoVeiculo, modelo, placa, valorDaDiaria, disponibilidade,tipoVeiculo);
-        this.tipoCombustivel = tipoCombustivel;
+        //this.tipoCombustivel = tipoCombustivel;
     }
 
-    public String getTipoCombustivel() {
-        return tipoCombustivel;
-    }
-
-    public void setTipoCombustivel(String tipoCombustivel) {
-        this.tipoCombustivel = tipoCombustivel;
-    }
+//    public String getTipoCombustivel() {
+//        return tipoCombustivel;
+//    }
+//
+//    public void setTipoCombustivel(String tipoCombustivel) {
+//        this.tipoCombustivel = tipoCombustivel;
+//    }
 
 //    @Override
 //    public String toString() {

@@ -7,7 +7,7 @@ public class Suv extends Veiculo implements VeiculoLuxo {
     private boolean portaMalasEletrico;
 
 
-    public Suv(int codigoVeiculo,String modelo, String placa, double valorDaDiaria, boolean disponibilidade, TipoVeiculo tipoVeiculo) {
+    public Suv(int codigoVeiculo,String modelo, String placa, double valorDaDiaria, boolean disponibilidade, String tipoVeiculo) {
         super(codigoVeiculo,modelo, placa, valorDaDiaria, disponibilidade, tipoVeiculo);
     }
 

@@ -6,9 +6,9 @@ public abstract class Veiculo {
     private String placa;
     private double valorDaDiaria;
     private boolean disponibilidade;
-    private TipoVeiculo tipoVeiculo;
+    private String tipoVeiculo;
 
-    public Veiculo(int codigoVeiculo, String modelo, String placa, double valorDaDiaria, boolean disponibilidade, TipoVeiculo tipoVeiculo) {
+    public Veiculo(int codigoVeiculo, String modelo, String placa, double valorDaDiaria, boolean disponibilidade, String tipoVeiculo) {
         this.codigoVeiculo = codigoVeiculo;
         this.modelo = modelo;
         this.placa = placa;
@@ -69,11 +69,11 @@ public abstract class Veiculo {
         this.disponibilidade = disponibilidade;
     }
 
-    public TipoVeiculo getTipoVeiculo() {
+    public String getTipoVeiculo() {
         return tipoVeiculo;
     }
 
-    public void setTipoVeiculo(TipoVeiculo tipoVeiculo) {
+    public void setTipoVeiculo(String tipoVeiculo) {
         this.tipoVeiculo = tipoVeiculo;
     }
 }

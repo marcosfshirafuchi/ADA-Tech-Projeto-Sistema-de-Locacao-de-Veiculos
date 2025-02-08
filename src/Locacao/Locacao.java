@@ -7,6 +7,8 @@ import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 import java.time.temporal.ChronoUnit;
 
+import static BancoDeDados.RegistrosDosBancosDeDados.registroVeiculos;
+
 public class Locacao {
 
     private Cliente cliente;
@@ -15,17 +17,19 @@ public class Locacao {
     private LocalDate dataDeFim;
 
     public double calcularvalorTotal(long dias, long diaPassados, double multa){
-        if (diaPassados == 0){
+//        if (diaPassados == 0){
             return dias * getVeiculo().getValorDaDiaria();
-        }else{
-            return dias * getVeiculo().getValorDaDiaria() + diaPassados * getVeiculo().getValorDaDiaria() +(diaPassados * getVeiculo().getValorDaDiaria() * multa);
-        }
+//        }else{
+//            return dias * getVeiculo().getValorDaDiaria() + diaPassados * getVeiculo().getValorDaDiaria() +(diaPassados * getVeiculo().getValorDaDiaria() * multa);
+//        }
 
     }
 
 
-    public void alugarVeiculo(Locacao locacao,LocalDate dataDeInicio, LocalDate dataDeFim){
-
+    public static void alugarVeiculo(Locacao locacao, int codigo){
+        if(verificarStatusDoVeiculo(codigo)){
+            locacao.veiculo.setDisponibilidade(false);
+        }
     }
 
     public double devolverVeiculo(LocalDate dataDeInicio, LocalDate dataDeFim, LocalDate dataDeFimAtual){
@@ -47,8 +51,15 @@ public class Locacao {
 
 
 
-    public void verificarStatusDoVeiculo(int codigo){
-
+    public static boolean verificarStatusDoVeiculo(int codigo){
+        //List<Veiculo> listaDeVeiculos = new ArrayList<>();
+        for (Veiculo veiculoDisponivel: registroVeiculos()){
+            if (veiculoDisponivel.getCodigoVeiculo() == codigo && veiculoDisponivel.isDisponibilidade()){
+                //System.out.println("Veiculo do código "+ codigo +": disponível!");
+                return true;
+            }
+        }
+        return false;
     }
 
     public Locacao(Cliente cliente, Veiculo veiculo, LocalDate dataDeInicio, LocalDate dataDeFim) {

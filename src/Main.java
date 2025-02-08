@@ -2,15 +2,22 @@ import Clientes.*;
 import Locacao.Locacao;
 import Veiculos.Suv;
 import Veiculos.TipoVeiculo;
+import Veiculos.Veiculo;
 
 import java.time.LocalDate;
+import java.util.List;
 import java.util.Scanner;
 
+import static BancoDeDados.RegistrosDosBancosDeDados.buscarRegistroVeiculo;
+import static BancoDeDados.RegistrosDosBancosDeDados.registroVeiculos;
 import static Clientes.CadastrarCliente.cadastrarPessoaJuridica;
 import static Locacao.DataDevolucao.dataAtualDeDevolucao;
 import static Locacao.DataDevolucao.dataDeDevolucaoRegistrada;
 import static Locacao.DataDeEntrada.dataDeDEntrada;
+import static Locacao.Locacao.alugarVeiculo;
 import static Locacao.LocacaoValidator.validarPeriodoLocacao;
+import static Relatorios.Relatorios.relatorioVeiculosAlugados;
+import static Relatorios.Relatorios.relatorioVeiculosDisponiveis;
 
 public class Main {
     public static void main(String[] args) {
@@ -54,8 +61,24 @@ public class Main {
                 System.out.println("Período de locação válido.");
             }
         }while (!validarPeriodoLocacao(dataInicio, dataFim));
+        relatorioVeiculosDisponiveis(registroVeiculos());
+        System.out.print("Digite o código do veiculo para alugar: ");
+        int codigoDoVeiculo = scanner.nextInt();
 
-        Suv carro = new Suv(1,"Honda Civic", "XYZ-9876", 200.0, true, TipoVeiculo.SUV);
+        Veiculo carro = buscarRegistroVeiculo(codigoDoVeiculo);
+//        switch (opcaoTipoCarro) {
+//            case (1):
+//                break;
+//            case (2):
+//                break;
+//            case (3):
+//                break;
+//            case (4):
+//                break;
+//            case (5):
+//                break;
+//        }
+//        Suv carro = new Suv(1,"Honda Civic", "XYZ-9876", 200.0, true, TipoVeiculo.SUV.getTipoDoVeiculo());
 
         Locacao locacao = null;
         LocalDate dataFimAtual;
@@ -63,22 +86,17 @@ public class Main {
         switch (opcaoCliente){
             case 1:
                 locacao = new Locacao(pessoafisica,carro,dataInicio,dataFim);
-                dataFimAtual = dataAtualDeDevolucao(dataInicio);
-                locacao = new Locacao(pessoafisica,carro,dataInicio,dataFimAtual);
                 System.out.println(locacao);
-                System.out.println("Valor a ser Pago: " + String.format("R$ %.2f", locacao.devolverVeiculo(dataInicio,dataFim,dataFimAtual)));
+                System.out.println("Valor a ser Pago: " + String.format("R$ %.2f", locacao.devolverVeiculo(dataInicio,dataFim,dataFim)));
                 break;
             case 2:
                 locacao = new Locacao(pessoaJuridica,carro,dataInicio,dataFim);
-                dataFimAtual = dataAtualDeDevolucao(dataInicio);
-                locacao = new Locacao(pessoaJuridica,carro,dataInicio,dataFimAtual);
                 System.out.println(locacao);
-                System.out.println("Valor a ser Pago: " + String.format("R$ %.2f", locacao.devolverVeiculo(dataInicio,dataFim,dataFimAtual)));
+                System.out.println("Valor a ser Pago: " + String.format("R$ %.2f", locacao.devolverVeiculo(dataInicio,dataFim,dataFim)));
                 break;
         }
-
-
-        locacao.alugarVeiculo(locacao,dataInicio, dataFim);
+        alugarVeiculo(locacao,codigoDoVeiculo);
+        relatorioVeiculosAlugados(registroVeiculos());
         scanner.close();
     }
 }
