@@ -8,11 +8,15 @@ public enum TipoVeiculo {
     CAMINHAO("Caminhão", 500.0);
 
     private final String tipoDoVeiculo;
-    private final double valorDaDiaria;
+    private  double valorDaDiaria;
 
     TipoVeiculo(String tipoDoVeiculo, double valorDaDiaria) {
         this.tipoDoVeiculo = tipoDoVeiculo;
         this.valorDaDiaria = valorDaDiaria;
+    }
+
+    TipoVeiculo(String tipoDoVeiculo) {
+        this.tipoDoVeiculo = tipoDoVeiculo;
     }
 
     public String getTipoDoVeiculo() {
