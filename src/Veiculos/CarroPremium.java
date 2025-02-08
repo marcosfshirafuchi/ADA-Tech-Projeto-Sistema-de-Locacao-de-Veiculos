@@ -6,12 +6,8 @@ public class CarroPremium extends Veiculo implements VeiculoLuxo {
     private boolean visaoNoturna;
     private boolean pilotoAutomatico;
 
-    public CarroPremium(int codigoVeiculo,String modelo, String placa, double valorDaDiaria, boolean disponibilidade,TipoVeiculo tipoVeiculo, boolean massagemNoBanco, boolean iluminacaoInternaPersonalizavel, boolean visaoNoturna, boolean pilotoAutomatico) {
+    public CarroPremium(int codigoVeiculo,String modelo, String placa, double valorDaDiaria, boolean disponibilidade,TipoVeiculo tipoVeiculo) {
         super(codigoVeiculo,modelo, placa, valorDaDiaria, disponibilidade, tipoVeiculo);
-        this.massagemNoBanco = massagemNoBanco;
-        this.iluminacaoInternaPersonalizavel = iluminacaoInternaPersonalizavel;
-        this.visaoNoturna = visaoNoturna;
-        this.pilotoAutomatico = pilotoAutomatico;
     }
 
     public void ativarMassagem() {
