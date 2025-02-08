@@ -4,8 +4,8 @@ public class Caminhao extends Veiculo {
     private double capacidadeCarga;
     private int numeroEixos;
 
-    public Caminhao(int codigoVeiculo, String modelo, String placa, double valorDaDiaria, boolean disponibilidade, double capacidadeCarga, int numeroEixos) {
-        super(codigoVeiculo, modelo, placa, valorDaDiaria, disponibilidade);
+    public Caminhao(int codigoVeiculo, String modelo, String placa, double valorDaDiaria, boolean disponibilidade,TipoVeiculo tipoVeiculo, double capacidadeCarga, int numeroEixos) {
+        super(codigoVeiculo, modelo, placa, valorDaDiaria, disponibilidade, tipoVeiculo);
         this.capacidadeCarga = capacidadeCarga;
         this.numeroEixos = numeroEixos;
     }

@@ -6,13 +6,15 @@ public abstract class Veiculo {
     private String placa;
     private double valorDaDiaria;
     private boolean disponibilidade;
+    private TipoVeiculo tipoVeiculo;
 
-    public Veiculo(int codigoVeiculo, String modelo, String placa, double valorDaDiaria, boolean disponibilidade) {
+    public Veiculo(int codigoVeiculo, String modelo, String placa, double valorDaDiaria, boolean disponibilidade, TipoVeiculo tipoVeiculo) {
         this.codigoVeiculo = codigoVeiculo;
         this.modelo = modelo;
         this.placa = placa;
         this.valorDaDiaria = valorDaDiaria;
         this.disponibilidade = disponibilidade;
+        this.tipoVeiculo = tipoVeiculo;
     }
 
     @Override
@@ -23,6 +25,7 @@ public abstract class Veiculo {
                 ", placa='" + placa + '\'' +
                 ", valorDaDiaria=" + valorDaDiaria +
                 ", disponibilidade=" + disponibilidade +
+                ", tipoVeiculo=" + tipoVeiculo +
                 '}';
     }
 
@@ -64,5 +67,13 @@ public abstract class Veiculo {
 
     public void setDisponibilidade(boolean disponibilidade) {
         this.disponibilidade = disponibilidade;
+    }
+
+    public TipoVeiculo getTipoVeiculo() {
+        return tipoVeiculo;
+    }
+
+    public void setTipoVeiculo(TipoVeiculo tipoVeiculo) {
+        this.tipoVeiculo = tipoVeiculo;
     }
 }

@@ -1,6 +1,7 @@
 import Clientes.*;
 import Locacao.Locacao;
 import Veiculos.Suv;
+import Veiculos.TipoVeiculo;
 
 import java.time.LocalDate;
 import java.util.Scanner;
@@ -44,7 +45,7 @@ public class Main {
                 System.out.println("Período de locação válido.");
             }
         }while (!validarPeriodoLocacao(dataInicio, dataFim));
-        Suv carro = new Suv(1,"Honda Civic", "XYZ-9876", 200.0, true, true, true,true);
+        Suv carro = new Suv(1,"Honda Civic", "XYZ-9876", 200.0, true, TipoVeiculo.SUV ,true, true,true);
         Locacao locacao = null;
         LocalDate dataFimAtual;
         switch (opcaoCliente){

@@ -6,8 +6,8 @@ public class Moto extends Veiculo {
     private boolean motoLigada;
     private Integer cilindradas;
 
-    public Moto(int codigoVeiculo, String modelo, String placa, double valorDaDiaria, boolean disponibilidade, Integer cilindradas, boolean motoLigada) {
-        super(codigoVeiculo, modelo, placa, valorDaDiaria, disponibilidade);
+    public Moto(int codigoVeiculo, String modelo, String placa, double valorDaDiaria, boolean disponibilidade,TipoVeiculo tipoVeiculo, Integer cilindradas, boolean motoLigada) {
+        super(codigoVeiculo, modelo, placa, valorDaDiaria, disponibilidade, tipoVeiculo);
         this.motoLigada = motoLigada;
         this.cilindradas = cilindradas;
         System.out.printf(String.valueOf(cilindradas));

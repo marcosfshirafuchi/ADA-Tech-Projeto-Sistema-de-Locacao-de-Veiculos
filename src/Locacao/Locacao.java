@@ -47,7 +47,7 @@ public class Locacao {
 
 
 
-    public void verificarStatusDoVeiculo(){
+    public void verificarStatusDoVeiculo(int codigo){
 
     }
 
