@@ -26,10 +26,11 @@ public class Main {
 
             switch (opcao){
                 case 1:
+                    System.out.println("");
                     escolherCadastroCliente();
                     break;
                 case 2:
-                    alugarCarro();
+                    alugar();
                     break;
                 case 3:
                     selecionarRelatorio();

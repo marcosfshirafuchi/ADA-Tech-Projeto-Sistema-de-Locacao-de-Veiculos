@@ -19,32 +19,48 @@ import static Relatorios.Relatorios.*;
 public class FuncoesMain {
 
     public static void escolherCadastroCliente() {
+
         Scanner scanner = new Scanner(System.in);
-        System.out.println("Escolha a opção do cliente:");
-        System.out.println("1 - Pessoa Física.");
-        System.out.println("2 - Pessoa Juridica.");
+        boolean loop = true;
 
-        System.out.print("Digite a opção do cliente desejada: ");
+        while(loop) {
+            System.out.println("\nEscolha a opção do cliente:\n");
+            System.out.println("1 - Pessoa Física");
+            System.out.println("2 - Pessoa Juridica");
+            System.out.println("3 - Voltar ao Menu Principal\n");
+            System.out.print("Digite a opção do cliente desejada: ");
 
-        int opcaoCliente = scanner.nextInt();
+            int opcaoCliente = scanner.nextInt();
 
-        PessoaFisica pessoafisica = new PessoaFisica();
-        PessoaJuridica pessoaJuridica = new PessoaJuridica();
+            PessoaFisica pessoafisica = new PessoaFisica();
+            PessoaJuridica pessoaJuridica = new PessoaJuridica();
 
-        switch (opcaoCliente){
-            case 1:
-                pessoafisica = CadastrarCliente.cadastrarPessoaFisica();
-                break;
-            case 2:
-                pessoaJuridica = cadastrarPessoaJuridica();
-                break;
-            default:
-                System.out.println("Opção inválida.\n Digite:\n 1 - Pessoa Física.\n 2-Pessoa Jurídica.");
+            switch (opcaoCliente){
+                case 1:
+                    System.out.print("\n");
+                    pessoafisica = CadastrarCliente.cadastrarPessoaFisica();
+                    break;
+                case 2:
+                    System.out.print("\n");
+                    pessoaJuridica = cadastrarPessoaJuridica();
+                    break;
+                case 3:
+                    System.out.println("\n------------------------------");
+                    System.out.println("Voltando ao Menu Principal.");
+                    System.out.println("------------------------------\n");
+                    loop = false;
+                    break;
+                default:
+                    System.out.println("\n------------------------------");
+                    System.out.println("Digite uma opção válida.");
+                    System.out.println("------------------------------\n");
 
+            }
         }
+
     }
 
-    public static void alugarCarro (){
+    public static void alugar(){
         PessoaFisica pessoafisica = new PessoaFisica();
         PessoaJuridica pessoaJuridica = new PessoaJuridica();
         Scanner scanner = new Scanner(System.in);
