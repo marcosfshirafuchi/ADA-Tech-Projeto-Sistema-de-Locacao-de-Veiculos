@@ -14,8 +14,7 @@ import static Locacao.DataDeEntrada.dataDeDEntrada;
 import static Locacao.DataDevolucao.dataDeDevolucaoRegistrada;
 import static Locacao.Locacao.alugarVeiculo;
 import static Locacao.LocacaoValidator.validarPeriodoLocacao;
-import static Relatorios.Relatorios.relatorioVeiculosAlugados;
-import static Relatorios.Relatorios.relatorioVeiculosDisponiveis;
+import static Relatorios.Relatorios.*;
 
 public class FuncoesMain {
 
@@ -108,28 +107,40 @@ public class FuncoesMain {
     public static void selecionarRelatorio(){
         Scanner scanner = new Scanner(System.in);
 
-        System.out.println("1 - Lista dos veículos disponíveis. \n 2 - Lista dos veículos alugados. \n 3 - Lista dos veículos de luxo.");
+        boolean loop = true;
 
-        System.out.print("Selecione uma opção: ");
-        int opcao = scanner.nextInt();;
+        while(loop) {
+            System.out.println();
+            System.out.println("1 - Lista dos veículos disponíveis. \n2 - Lista dos veículos alugados. \n3 - Lista dos veículos de luxo.\n");
+            System.out.print("Selecione uma opção: ");
+            int opcao = scanner.nextInt();
+            System.out.println();
 
-        switch (opcao) {
-            case 1:
-                System.out.println("Veículos disponíveis:");
-                relatorioVeiculosDisponiveis(registroVeiculos());
-                break;
-            case 2:
-                System.out.println("Veículos alugados:");
-                relatorioVeiculosAlugados(registroVeiculos());
-                break;
-            case 3:
-                System.out.println("Veiculos de luxo:");
-                //                    relatorioVeiculoLuxo(registroVeiculos());
+            switch (opcao) {
+                case 1:
+                    System.out.println("-------------------------------------");
+                    relatorioVeiculosDisponiveis(registroVeiculos());
+                    break;
+                case 2:
+                    System.out.println("-------------------------------------");
+                    relatorioVeiculosAlugados(registroVeiculos());
+                    break;
+                case 3:
+                    System.out.println("-------------------------------------");
+                    relatorioVeiculoLuxo(registroVeiculos());
+                    break;
+                case 4:
+                    System.out.println("\n-------------------------------------");
+                    System.out.println("Retornando ao menu principal.");
+                    System.out.println("-------------------------------------");
+                    loop = false;
+                    break;
+                default:
+                    System.out.println("\n-------------------------------------");
+                    System.out.println("Digite uma opção válida.");
+                    System.out.println("-------------------------------------");
+
+            }
         }
-
-
-
-
     }
-
 }

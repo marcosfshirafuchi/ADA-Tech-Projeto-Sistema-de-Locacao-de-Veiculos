@@ -8,18 +8,18 @@ public class Main {
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
 
-        System.out.println("**************Sistema de Locação de Veículos**************");
+        System.out.println("**************Sistema de Locação de Veículos**************\n");
+
         int opcao;
         boolean loop = true;
 
-
         while(loop) {
-            System.out.println("Escolha o tipo de serviço que deseja executar: ");
+            System.out.println("Escolha o tipo de serviço que deseja executar: \n");
 
             System.out.println("1 - Cadastro de Cliente");
             System.out.println("2 - Aluguel de automóvel");
             System.out.println("3 - Consulta aos relatórios dos veículos");
-            System.out.println("4 - Sair do sistema");
+            System.out.println("4 - Sair do sistema \n");
 
             System.out.print("Digite a opção desejada: ");
             opcao = scanner.nextInt();
@@ -43,9 +43,5 @@ public class Main {
                     System.out.println("------------------------------");
             }
         }
-
     }
-
-
-
 }
