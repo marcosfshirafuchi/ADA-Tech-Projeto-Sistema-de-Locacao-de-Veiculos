@@ -19,7 +19,35 @@ public class RegistrosDosBancosDeDados {
         listaDeVeiculos.add(new Suv(6, "Toyota Corolla Cross XR", "ABC-2724", TipoVeiculo.SUV.getValorDaDiaria(), true, TipoVeiculo.SUV.getTipoDoVeiculo()));
         return listaDeVeiculos;
     }
+}
 
+public static List<Veiculo> registroCarrosComuns() {
+    List<Veiculo> listaDeCarrosComuns = new ArrayList<>();
+    listaDeCarrosComuns.add(new CarroComum(7, "Fiat Argo", "DEF-1234", TipoVeiculo.CARRO_COMUM.getValorDaDiaria(), true, TipoVeiculo.CARRO_COMUM.getTipoDoVeiculo()));
+    listaDeCarrosComuns.add(new CarroComum(8, "Volkswagen Gol", "GHI-5678", TipoVeiculo.CARRO_COMUM.getValorDaDiaria(), true, TipoVeiculo.CARRO_COMUM.getTipoDoVeiculo()));
+    return listaDeCarrosComuns;
+}
+
+public static List<Veiculo> registroCarrosPremium() {
+    List<Veiculo> listaDeCarrosPremium = new ArrayList<>();
+    listaDeCarrosPremium.add(new CarroPremium(9, "BMW Série 3", "JKL-9012", TipoVeiculo.CARRO_PREMIUM.getValorDaDiaria(), true, TipoVeiculo.CARRO_PREMIUM.getTipoDoVeiculo()));
+    listaDeCarrosPremium.add(new CarroPremium(10, "Audi A4", "MNO-3456", TipoVeiculo.CARRO_PREMIUM.getValorDaDiaria(), true, TipoVeiculo.CARRO_PREMIUM.getTipoDoVeiculo()));
+    return listaDeCarrosPremium;
+}
+
+public static List<Veiculo> registroMotos() {
+    List<Veiculo> listaDeMotos = new ArrayList<>();
+    listaDeMotos.add(new Moto(11, "Honda CB 500", "PQR-7890", TipoVeiculo.MOTO.getValorDaDiaria(), true, TipoVeiculo.MOTO.getTipoDoVeiculo()));
+    listaDeMotos.add(new Moto(12, "Yamaha MT-03", "STU-1122", TipoVeiculo.MOTO.getValorDaDiaria(), true, TipoVeiculo.MOTO.getTipoDoVeiculo()));
+    return listaDeMotos;
+}
+
+public static List<Veiculo> registroCaminhoes() {
+    List<Veiculo> listaDeCaminhoes = new ArrayList<>();
+    listaDeCaminhoes.add(new Caminhao(13, "Volvo FH", "VWX-3344", TipoVeiculo.CAMINHAO.getValorDaDiaria(), true, TipoVeiculo.CAMINHAO.getTipoDoVeiculo()));
+    listaDeCaminhoes.add(new Caminhao(14, "Mercedes-Benz Actros", "YZA-5566", TipoVeiculo.CAMINHAO.getValorDaDiaria(), true, TipoVeiculo.CAMINHAO.getTipoDoVeiculo()));
+    return listaDeCaminhoes;
+}
     public static Veiculo buscarRegistroVeiculo(int codigo) {
         Veiculo veiculoEncontrado = null;
 
@@ -86,4 +114,8 @@ public class RegistrosDosBancosDeDados {
         return veiculoEncontrado;
     }
 
-}
+
+
+
+
+

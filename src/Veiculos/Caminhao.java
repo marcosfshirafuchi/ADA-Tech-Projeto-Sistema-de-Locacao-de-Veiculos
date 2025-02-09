@@ -39,7 +39,7 @@ public class Caminhao extends Veiculo {
 //                '}';
 //    }
 //
-//    // Método para calcular o custo do aluguel com taxa adicional para caminhões grandes
+//
 //    public double calcularCustoAluguel(int dias) {
 //        double taxaAdicional = capacidadeCarga > 10 ? 1.15 : 1.0;
 //        return dias * getValorDaDiaria() * taxaAdicional;
