@@ -67,5 +67,16 @@ tarifa diária do veículo.
 
 ## Diagrama de classes
 <p align = center>
- <img src="https://i.ibb.co/r2Tp5XzV/Novo-diagrama-de-classe-07-02-2025.png" alt="Novo-diagrama-de-classe-07-02-2025" border="0">
+ <img src="https://i.ibb.co/CsnPZPTD/Diagrama-de-classe-final.png" alt="Diagrama-de-classe-final" border="0">
 </p>
+
+## Sites que geram CPFs e CNPJs para testar
+
+### Gerador de CPF
+
+https://www.4devs.com.br/gerador_de_cpf
+
+### Gerador de CNPJ
+
+https://www.4devs.com.br/gerador_de_cnpj
+
