@@ -58,7 +58,7 @@ public class CadastrarCliente {
         }else {
             endereco = new Endereco(cep,logradouro,numero,complemento,bairro,cidade,estadoBrasil);
         }
-        PessoaFisica pessoaFisica = new PessoaFisica(nome,cpf,endereco,telefone);
+        PessoaFisica pessoaFisica = new PessoaFisica(nome,cpf,endereco,telefone,TipoDeCliente.PESSOA_FISICA.getTipoDeCliente());
         return pessoaFisica;
     }
 
@@ -114,8 +114,7 @@ public class CadastrarCliente {
         }else {
             endereco = new Endereco(cep,logradouro,numero,complemento,bairro,cidade,estadoBrasil);
         }
-        PessoaJuridica pessoaJuridica = new PessoaJuridica(nome,cnpj,endereco,telefone);
+        PessoaJuridica pessoaJuridica = new PessoaJuridica(nome,cnpj,endereco,telefone,TipoDeCliente.PESSOA_JURIDICA.getTipoDeCliente());
         return pessoaJuridica;
     }
-
 }

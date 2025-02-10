@@ -6,6 +6,8 @@ import Veiculos.Veiculo;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 import java.time.temporal.ChronoUnit;
+import java.util.ArrayList;
+import java.util.List;
 
 import static BancoDeDados.RegistrosDosBancosDeDados.registroVeiculos;
 
@@ -16,46 +18,37 @@ public class Locacao {
     private LocalDate dataDeInicio;
     private LocalDate dataDeFim;
 
-    public double calcularvalorTotal(long dias, long diaPassados, double multa){
-//        if (diaPassados == 0){
-            return dias * getVeiculo().getValorDaDiaria();
-//        }else{
-//            return dias * getVeiculo().getValorDaDiaria() + diaPassados * getVeiculo().getValorDaDiaria() +(diaPassados * getVeiculo().getValorDaDiaria() * multa);
-//        }
-
+    public double calcularvalorTotal(long dias, long diaPassados, double multa) {
+        return dias * getVeiculo().getValorDaDiaria();
     }
 
 
-    public static void alugarVeiculo(Locacao locacao, int codigo){
-        if(verificarStatusDoVeiculo(codigo)){
+    public static void alugarVeiculo(Locacao locacao, int codigo) {
+        List<Locacao> registroDeLocacao = new ArrayList<>();
+        if (verificarStatusDoVeiculo(codigo)) {
             locacao.veiculo.setDisponibilidade(false);
+            registroDeLocacao.add(locacao);
+            System.out.println("Registro das locações:");
+            System.out.println("-------------------------------------");
+            System.out.println(registroDeLocacao);
+            System.out.println();
         }
+
     }
 
-    public double devolverVeiculo(LocalDate dataDeInicio, LocalDate dataDeFim, LocalDate dataDeFimAtual){
+    public double devolverVeiculo(LocalDate dataDeInicio, LocalDate dataDeFim, LocalDate dataDeFimAtual) {
         LocalDate hoje = dataDeFimAtual;
         double multa = 0.0;
         long dias = 0;
         long diaPassados = 0;
-        if (hoje.isAfter(dataDeFim)){
-            diaPassados = ChronoUnit.DAYS.between(dataDeFim, hoje);
-            multa = 0.20;
-            dias = ChronoUnit.DAYS.between(dataDeInicio, dataDeFim);
-            return calcularvalorTotal(dias,diaPassados,multa);
-        }
-        else {
-            dias = ChronoUnit.DAYS.between(dataDeInicio, dataDeFim);
-            return calcularvalorTotal(dias,diaPassados,multa);
-        }
+        dias = ChronoUnit.DAYS.between(dataDeInicio, dataDeFim);
+        return calcularvalorTotal(dias, diaPassados, multa);
     }
 
 
-
-    public static boolean verificarStatusDoVeiculo(int codigo){
-        //List<Veiculo> listaDeVeiculos = new ArrayList<>();
-        for (Veiculo veiculoDisponivel: registroVeiculos()){
-            if (veiculoDisponivel.getCodigoVeiculo() == codigo && veiculoDisponivel.isDisponibilidade()){
-                //System.out.println("Veiculo do código "+ codigo +": disponível!");
+    public static boolean verificarStatusDoVeiculo(int codigo) {
+        for (Veiculo veiculoDisponivel : registroVeiculos()) {
+            if (veiculoDisponivel.getCodigoVeiculo() == codigo && veiculoDisponivel.isDisponibilidade()) {
                 return true;
             }
         }

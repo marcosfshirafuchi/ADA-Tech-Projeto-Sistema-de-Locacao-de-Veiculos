@@ -5,15 +5,17 @@ public abstract class Cliente {
     private String documento;
     private Endereco endereco;
     private String telefone;
+    private String tipoDeCliente;
 
     public Cliente(){
 
     }
-    public Cliente(String nome, String documento, Endereco endereco, String telefone) {
+    public Cliente(String nome, String documento, Endereco endereco, String telefone,String tipoDeCliente) {
         this.nome = nome;
         this.documento = documento;
         this.endereco = endereco;
         this.telefone = telefone;
+        this.tipoDeCliente = tipoDeCliente;
     }
 
     public String getNome() {
@@ -48,6 +50,14 @@ public abstract class Cliente {
         this.telefone = telefone;
     }
 
+    public String getTipoDeCliente() {
+        return tipoDeCliente;
+    }
+
+    public void setTipoDeCliente(String tipoDeCliente) {
+        this.tipoDeCliente = tipoDeCliente;
+    }
+
     @Override
     public String toString() {
         return "Cliente{" +
@@ -55,6 +65,7 @@ public abstract class Cliente {
                 ", documento='" + documento + '\'' +
                 ", endereco=" + endereco +
                 ", telefone='" + telefone + '\'' +
+                ", tipoDeCliente='" + tipoDeCliente + '\'' +
                 '}';
     }
 }

@@ -2,7 +2,7 @@ package Clientes;
 
 public class EscolhaSiglaDeEstado {
     public static void imprimirSiglaDosEstadosBrasileiros(){
-        System.out.println("1 - Acre (AC)\n" +
+        System.out.println("\n1 - Acre (AC)\n" +
                 "2 - Alagoas (AL)\n" +
                 "3 - Amapá (AP)\n" +
                 "4 - Amazonas (AM)\n" +

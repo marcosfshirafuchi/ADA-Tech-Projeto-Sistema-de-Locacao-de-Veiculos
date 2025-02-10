@@ -1,13 +1,18 @@
 package BancoDeDados;
 
+import Clientes.Cliente;
+import Clientes.PessoaFisica;
+import Clientes.PessoaJuridica;
 import Veiculos.*;
 
 import java.util.ArrayList;
 import java.util.List;
-
+import java.util.Objects;
 
 public class RegistrosDosBancosDeDados {
-    static int contador = 7;
+
+
+    static List<Cliente> listaDeClientes = new ArrayList<>();
 
     public static List<Veiculo> registroVeiculos() {
         List<Veiculo> listaDeVeiculos = new ArrayList<>();
@@ -17,43 +22,31 @@ public class RegistrosDosBancosDeDados {
         listaDeVeiculos.add(new Suv(4, "Volkswagen Nivus", "ABC-2722", TipoVeiculo.SUV.getValorDaDiaria(), false, TipoVeiculo.SUV.getTipoDoVeiculo()));
         listaDeVeiculos.add(new Suv(5, "Chevrolet Equinox Premier", "ABC-2723", TipoVeiculo.SUV.getValorDaDiaria(), true, TipoVeiculo.SUV.getTipoDoVeiculo()));
         listaDeVeiculos.add(new Suv(6, "Toyota Corolla Cross XR", "ABC-2724", TipoVeiculo.SUV.getValorDaDiaria(), true, TipoVeiculo.SUV.getTipoDoVeiculo()));
+
+        //Exemplo de Carro Comum
+        listaDeVeiculos.add(new CarroComum(7, "Gol", "ABC-2725", TipoVeiculo.CARRO_COMUM.getValorDaDiaria(), true, TipoVeiculo.CARRO_COMUM.getTipoDoVeiculo()));
+
+        //Exemplo de Carro Premiun
+        listaDeVeiculos.add(new CarroComum(8, "BMW X1", "ABC-2726", TipoVeiculo.CARRO_PREMIUM.getValorDaDiaria(), true, TipoVeiculo.CARRO_PREMIUM.getTipoDoVeiculo()));
+
+        //Exemplo de SUV
+        listaDeVeiculos.add(new Suv(9, "Honda WR-V ", "ABC-2727", TipoVeiculo.SUV.getValorDaDiaria(), true, TipoVeiculo.SUV.getTipoDoVeiculo()));
+
+        //Exemplo de Moto
+        listaDeVeiculos.add(new Moto(10, "Yamaha Crosser 150", "ABC-2728", TipoVeiculo.MOTO.getValorDaDiaria(), true, TipoVeiculo.MOTO.getTipoDoVeiculo()));
+
+        //Exemplo de Caminhão
+        listaDeVeiculos.add(new Caminhao(11, "Mercedes-Benz Acello 1017", "ABC-2729", TipoVeiculo.CAMINHAO.getValorDaDiaria(), true, TipoVeiculo.CAMINHAO.getTipoDoVeiculo()));
+
         return listaDeVeiculos;
     }
-}
 
-public static List<Veiculo> registroCarrosComuns() {
-    List<Veiculo> listaDeCarrosComuns = new ArrayList<>();
-    listaDeCarrosComuns.add(new CarroComum(7, "Fiat Argo", "DEF-1234", TipoVeiculo.CARRO_COMUM.getValorDaDiaria(), true, TipoVeiculo.CARRO_COMUM.getTipoDoVeiculo()));
-    listaDeCarrosComuns.add(new CarroComum(8, "Volkswagen Gol", "GHI-5678", TipoVeiculo.CARRO_COMUM.getValorDaDiaria(), true, TipoVeiculo.CARRO_COMUM.getTipoDoVeiculo()));
-    return listaDeCarrosComuns;
-}
-
-public static List<Veiculo> registroCarrosPremium() {
-    List<Veiculo> listaDeCarrosPremium = new ArrayList<>();
-    listaDeCarrosPremium.add(new CarroPremium(9, "BMW Série 3", "JKL-9012", TipoVeiculo.CARRO_PREMIUM.getValorDaDiaria(), true, TipoVeiculo.CARRO_PREMIUM.getTipoDoVeiculo()));
-    listaDeCarrosPremium.add(new CarroPremium(10, "Audi A4", "MNO-3456", TipoVeiculo.CARRO_PREMIUM.getValorDaDiaria(), true, TipoVeiculo.CARRO_PREMIUM.getTipoDoVeiculo()));
-    return listaDeCarrosPremium;
-}
-
-public static List<Veiculo> registroMotos() {
-    List<Veiculo> listaDeMotos = new ArrayList<>();
-    listaDeMotos.add(new Moto(11, "Honda CB 500", "PQR-7890", TipoVeiculo.MOTO.getValorDaDiaria(), true, TipoVeiculo.MOTO.getTipoDoVeiculo()));
-    listaDeMotos.add(new Moto(12, "Yamaha MT-03", "STU-1122", TipoVeiculo.MOTO.getValorDaDiaria(), true, TipoVeiculo.MOTO.getTipoDoVeiculo()));
-    return listaDeMotos;
-}
-
-public static List<Veiculo> registroCaminhoes() {
-    List<Veiculo> listaDeCaminhoes = new ArrayList<>();
-    listaDeCaminhoes.add(new Caminhao(13, "Volvo FH", "VWX-3344", TipoVeiculo.CAMINHAO.getValorDaDiaria(), true, TipoVeiculo.CAMINHAO.getTipoDoVeiculo()));
-    listaDeCaminhoes.add(new Caminhao(14, "Mercedes-Benz Actros", "YZA-5566", TipoVeiculo.CAMINHAO.getValorDaDiaria(), true, TipoVeiculo.CAMINHAO.getTipoDoVeiculo()));
-    return listaDeCaminhoes;
-}
     public static Veiculo buscarRegistroVeiculo(int codigo) {
         Veiculo veiculoEncontrado = null;
 
         for (Veiculo veiculoDisponivel : registroVeiculos()) {
             if (veiculoDisponivel.getCodigoVeiculo() == codigo && veiculoDisponivel.isDisponibilidade()) {
-                if (veiculoDisponivel.getTipoVeiculo().equals(TipoVeiculo.CARRO_COMUM.getTipoDoVeiculo())){
+                if (veiculoDisponivel.getTipoVeiculo().equals(TipoVeiculo.CARRO_COMUM.getTipoDoVeiculo())) {
                     veiculoEncontrado = new CarroComum(
                             veiculoDisponivel.getCodigoVeiculo(),
                             veiculoDisponivel.getModelo(),
@@ -63,7 +56,7 @@ public static List<Veiculo> registroCaminhoes() {
                             veiculoDisponivel.getTipoVeiculo()
 
                     );
-                } else if (veiculoDisponivel.getTipoVeiculo().equals(TipoVeiculo.CARRO_PREMIUM.getTipoDoVeiculo())){
+                } else if (veiculoDisponivel.getTipoVeiculo().equals(TipoVeiculo.CARRO_PREMIUM.getTipoDoVeiculo())) {
                     veiculoEncontrado = new CarroPremium(
                             veiculoDisponivel.getCodigoVeiculo(),
                             veiculoDisponivel.getModelo(),
@@ -72,7 +65,7 @@ public static List<Veiculo> registroCaminhoes() {
                             veiculoDisponivel.isDisponibilidade(),
                             veiculoDisponivel.getTipoVeiculo()
                     );
-                }else if (veiculoDisponivel.getTipoVeiculo().equals(TipoVeiculo.SUV.getTipoDoVeiculo())) {
+                } else if (veiculoDisponivel.getTipoVeiculo().equals(TipoVeiculo.SUV.getTipoDoVeiculo())) {
                     veiculoEncontrado = new Suv(
                             veiculoDisponivel.getCodigoVeiculo(),
                             veiculoDisponivel.getModelo(),
@@ -84,38 +77,61 @@ public static List<Veiculo> registroCaminhoes() {
                     );
 
                 } else if (veiculoDisponivel.getTipoVeiculo().equals(TipoVeiculo.MOTO.getTipoDoVeiculo())) {
-                veiculoEncontrado = new Moto(
-                        veiculoDisponivel.getCodigoVeiculo(),
-                        veiculoDisponivel.getModelo(),
-                        veiculoDisponivel.getPlaca(),
-                        veiculoDisponivel.getValorDaDiaria(),
-                        veiculoDisponivel.isDisponibilidade(),
-                        veiculoDisponivel.getTipoVeiculo()
+                    veiculoEncontrado = new Moto(
+                            veiculoDisponivel.getCodigoVeiculo(),
+                            veiculoDisponivel.getModelo(),
+                            veiculoDisponivel.getPlaca(),
+                            veiculoDisponivel.getValorDaDiaria(),
+                            veiculoDisponivel.isDisponibilidade(),
+                            veiculoDisponivel.getTipoVeiculo()
 
 
+                    );
+                } else {
+                    veiculoEncontrado = new Caminhao(
+                            veiculoDisponivel.getCodigoVeiculo(),
+                            veiculoDisponivel.getModelo(),
+                            veiculoDisponivel.getPlaca(),
+                            veiculoDisponivel.getValorDaDiaria(),
+                            veiculoDisponivel.isDisponibilidade(),
+                            veiculoDisponivel.getTipoVeiculo()
 
-                );
+                    );
                 }
-                else{
-                veiculoEncontrado = new Caminhao(
-                        veiculoDisponivel.getCodigoVeiculo(),
-                        veiculoDisponivel.getModelo(),
-                        veiculoDisponivel.getPlaca(),
-                        veiculoDisponivel.getValorDaDiaria(),
-                        veiculoDisponivel.isDisponibilidade(),
-                        veiculoDisponivel.getTipoVeiculo()
 
-                );
-                }
+            }
 
         }
-
-    }
         return veiculoEncontrado;
     }
 
+    public static List<Cliente> registrarClientes(Cliente cliente) {
+        listaDeClientes.add(cliente);
+        return listaDeClientes;
+    }
 
+    public static Cliente buscarRegistroCliente() {
+        Cliente clienteEncontrado = null;
+        for (Cliente clienteDisponivel : listaDeClientes) {
 
+            if (Objects.equals(clienteDisponivel.getTipoDeCliente(), "Pessoa Física")) {
+                clienteEncontrado = new PessoaFisica(
+                        clienteDisponivel.getNome(),
+                        clienteDisponivel.getDocumento(),
+                        clienteDisponivel.getEndereco(),
+                        clienteDisponivel.getTelefone(),
+                        clienteDisponivel.getTipoDeCliente()
+                );
+            } else {
+                clienteEncontrado = new PessoaJuridica(
+                        clienteDisponivel.getNome(),
+                        clienteDisponivel.getDocumento(),
+                        clienteDisponivel.getEndereco(),
+                        clienteDisponivel.getTelefone(),
+                        clienteDisponivel.getTipoDeCliente());
+            }
 
-
-
+        }
+        return clienteEncontrado;
+    }
+}

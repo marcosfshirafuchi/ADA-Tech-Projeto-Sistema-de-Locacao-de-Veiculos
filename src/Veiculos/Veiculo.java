@@ -24,7 +24,7 @@ public abstract class Veiculo {
                 ", modelo='" + modelo + '\'' +
                 ", placa='" + placa + '\'' +
                 ", valorDaDiaria=" + valorDaDiaria +
-                ", disponibilidade=" + disponibilidade +
+                ", disponibilidade=" + (disponibilidade ? "disponível" : "indisponível") +
                 ", tipoVeiculo=" + tipoVeiculo +
                 '}';
     }

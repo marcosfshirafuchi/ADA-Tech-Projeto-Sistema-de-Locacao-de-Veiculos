@@ -1,14 +1,16 @@
 package FuncoesMain;
 
 import Clientes.CadastrarCliente;
+import Clientes.Cliente;
 import Clientes.PessoaFisica;
 import Clientes.PessoaJuridica;
 import Locacao.Locacao;
 import Veiculos.Veiculo;
 import java.time.LocalDate;
+import java.util.Objects;
 import java.util.Scanner;
-import static BancoDeDados.RegistrosDosBancosDeDados.buscarRegistroVeiculo;
-import static BancoDeDados.RegistrosDosBancosDeDados.registroVeiculos;
+
+import static BancoDeDados.RegistrosDosBancosDeDados.*;
 import static Clientes.CadastrarCliente.cadastrarPessoaJuridica;
 import static Locacao.DataDeEntrada.dataDeDEntrada;
 import static Locacao.DataDevolucao.dataDeDevolucaoRegistrada;
@@ -17,7 +19,7 @@ import static Locacao.LocacaoValidator.validarPeriodoLocacao;
 import static Relatorios.Relatorios.*;
 
 public class FuncoesMain {
-
+    static int opcaoCliente;
     public static void escolherCadastroCliente() {
 
         Scanner scanner = new Scanner(System.in);
@@ -30,19 +32,20 @@ public class FuncoesMain {
             System.out.println("3 - Voltar ao Menu Principal\n");
             System.out.print("Digite a opção do cliente desejada: ");
 
-            int opcaoCliente = scanner.nextInt();
+            opcaoCliente = scanner.nextInt();
 
             PessoaFisica pessoafisica = new PessoaFisica();
             PessoaJuridica pessoaJuridica = new PessoaJuridica();
-
             switch (opcaoCliente){
                 case 1:
                     System.out.print("\n");
                     pessoafisica = CadastrarCliente.cadastrarPessoaFisica();
+                    registrarClientes(pessoafisica);
                     break;
                 case 2:
                     System.out.print("\n");
                     pessoaJuridica = cadastrarPessoaJuridica();
+                    registrarClientes(pessoaJuridica);
                     break;
                 case 3:
                     System.out.println("\n------------------------------");
@@ -61,16 +64,18 @@ public class FuncoesMain {
     }
 
     public static void alugar(){
-        PessoaFisica pessoafisica = new PessoaFisica();
-        PessoaJuridica pessoaJuridica = new PessoaJuridica();
+        Cliente pessoafisica = new PessoaFisica();
+        Cliente pessoaJuridica = new PessoaJuridica();
         Scanner scanner = new Scanner(System.in);
 
-        System.out.print("Digite a opção do cliente desejada: ");
-
-        int opcaoCliente = scanner.nextInt();
-
+        Cliente cliente = buscarRegistroCliente();
         LocalDate dataInicio;
         LocalDate dataFim;
+        if (Objects.equals(cliente.getTipoDeCliente(), "Pessoa Física")){
+            pessoafisica =  buscarRegistroCliente();
+        }else{
+            pessoaJuridica = buscarRegistroCliente();
+        }
 
         do{
             dataInicio = dataDeDEntrada();
@@ -86,38 +91,22 @@ public class FuncoesMain {
         int codigoDoVeiculo = scanner.nextInt();
 
         Veiculo carro = buscarRegistroVeiculo(codigoDoVeiculo);
-//        switch (opcaoTipoCarro) {
-//            case (1):
-//                break;
-//            case (2):
-//                break;
-//            case (3):
-//                break;
-//            case (4):
-//                break;
-//            case (5):
-//                break;
-//        }
-//        Suv carro = new Suv(1,"Honda Civic", "XYZ-9876", 200.0, true, TipoVeiculo.SUV.getTipoDoVeiculo());
-
         Locacao locacao = null;
-        LocalDate dataFimAtual;
 
-        switch (opcaoCliente){
-            case 1:
-                locacao = new Locacao(pessoafisica,carro,dataInicio,dataFim);
-                System.out.println(locacao);
-                System.out.println("Valor a ser Pago: " + String.format("R$ %.2f", locacao.devolverVeiculo(dataInicio,dataFim,dataFim)));
-                break;
-            case 2:
-                locacao = new Locacao(pessoaJuridica,carro,dataInicio,dataFim);
-                System.out.println(locacao);
-                System.out.println("Valor a ser Pago: " + String.format("R$ %.2f", locacao.devolverVeiculo(dataInicio,dataFim,dataFim)));
-                break;
+        if (Objects.equals(cliente.getTipoDeCliente(), "Pessoa Física")) {
+
+            locacao = new Locacao(pessoafisica, carro, dataInicio, dataFim);
+            System.out.println(locacao);
+            System.out.println("Valor a ser Pago: " + String.format("R$ %.2f", locacao.devolverVeiculo(dataInicio, dataFim, dataFim)));
+        }else{
+
+            locacao = new Locacao(pessoaJuridica,carro,dataInicio,dataFim);
+            System.out.println(locacao);
+            System.out.println("Valor a ser Pago: " + String.format("R$ %.2f", locacao.devolverVeiculo(dataInicio,dataFim,dataFim)));
+
         }
         alugarVeiculo(locacao,codigoDoVeiculo);
         relatorioVeiculosAlugados(registroVeiculos());
-        scanner.close();
     }
 
     public static void selecionarRelatorio(){

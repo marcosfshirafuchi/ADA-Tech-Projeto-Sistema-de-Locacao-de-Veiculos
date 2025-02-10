@@ -4,9 +4,7 @@ public class PessoaFisica extends Cliente {
     public PessoaFisica() {
     }
 
-    public PessoaFisica(String nome, String documento, Endereco endereco, String telefone) {
-        super(nome, documento, endereco, telefone);
+    public PessoaFisica(String nome, String documento, Endereco endereco, String telefone, String tipoDeCliente) {
+        super(nome, documento, endereco, telefone, tipoDeCliente);
     }
-
-
 }
